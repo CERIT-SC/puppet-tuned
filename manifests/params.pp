@@ -50,7 +50,7 @@ ${facts['os']['name']} ${facts['os']['release']['major']}")
       }
     }
 
-    'Suse': {
+    'SLES','OpenSuSE': {
       $majversion = pick($_majversion, '2')
       $dynamic_tuning = true
       $main_conf = '/etc/tuned/tuned-main.conf'
