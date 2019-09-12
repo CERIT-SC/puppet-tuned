@@ -9,7 +9,8 @@ class tuned (
   Stdlib::Absolutepath $profiles_path                            = $tuned::params::profiles_path,
   String $active_profile_conf                                    = $tuned::params::active_profile_conf,
   Array[String, 1] $packages                                     = $tuned::params::packages,
-  Array[String, 1] $services                                     = $tuned::params::services
+  Array[String, 1] $services                                     = $tuned::params::services,
+  Hash $profiles                                                 = {}
 ) inherits tuned::params {
 
   contain tuned::install
@@ -28,4 +29,6 @@ class tuned (
     Class['tuned::service']
       -> Class['tuned::install']
   }
+
+  create_resources(tuned::profile, $profiles)
 }
