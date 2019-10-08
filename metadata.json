@@ -51,6 +51,12 @@
     },
     {
       "operatingsystem": "Fedora"
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "12"
+      ]
     }
   ],
   "requirements": [
