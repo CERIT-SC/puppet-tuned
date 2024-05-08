@@ -50,6 +50,16 @@ ${facts['os']['name']} ${facts['os']['release']['major']}")
       }
     }
 
+    'SLES','OpenSuSE': {
+      $majversion = pick($_majversion, '2')
+      $dynamic_tuning = true
+      $main_conf = '/etc/tuned/tuned-main.conf'
+      $services = ['tuned']
+      $profile = '' #autodetect
+      $profiles_path = '/etc/tuned'
+      $active_profile_conf = 'active_profile'
+    }
+
     default: {
       fail("Unsupported OS: ${facts['os']['name']}")
     }
