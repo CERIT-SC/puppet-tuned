@@ -4,7 +4,7 @@ class tuned::params {
   $sleep_interval = 1
   $update_interval = 10
 
-  if has_key($facts, 'tuned_version') and $facts['tuned_version'] =~ /^(\d+)\.[\d\.]+$/ {
+  if 'tuned_version' in $facts and $facts['tuned_version'] =~ /^(\d+)\.[\d\.]+$/ {
     $_majversion = $1
   } else {
     $_majversion = undef
@@ -33,7 +33,7 @@ class tuned::params {
           $active_profile_conf = 'active-profile'
         }
 
-        /7|8|9/: {
+        /7|8|9|10/: {
           $majversion = pick($_majversion, '2')
           $dynamic_tuning = false
           $main_conf = '/etc/tuned/tuned-main.conf'
